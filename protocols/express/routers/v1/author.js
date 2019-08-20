@@ -1,13 +1,12 @@
 'use strict';
 
 module.exports = [
-    // add routes get list here 
     {
         method: 'get',
         endpoint: '/global',
         handlers: [
             'TokenInterface.decodeToken',
-            'CRUDInterface.getList'
+            'AuthorInterface.getList'
         ]
     },
     // add routes get by id here
@@ -16,7 +15,7 @@ module.exports = [
         endpoint: '/global/:id',
         handlers: [
             'TokenInterface.decodeToken',
-            'CRUDInterface.getOne'
+            'AuthorInterface.getOne'
         ]
     },
     // add routes create data here here
@@ -25,7 +24,7 @@ module.exports = [
         endpoint: '/global',
         handlers: [
             'TokenInterface.decodeToken',
-            'CRUDInterface.create'
+            'AuthorInterface.create'
         ]
     },
     // add routes update data here
@@ -34,7 +33,7 @@ module.exports = [
         endpoint: '/global/:id',
         handlers: [
             'TokenInterface.decodeToken',
-            'CRUDInterface.update'
+            'AuthorInterface.update'
         ]
     },
     // add routes delete data here
@@ -43,7 +42,23 @@ module.exports = [
         endpoint: '/global/:id',
         handlers: [
             'TokenInterface.decodeToken',
-            'CRUDInterface.delete'
+            'AuthorInterface.delete'
         ]
-    }
+    },
+    {
+        method: 'get',
+        endpoint: '/',
+        handlers: [
+            'TokenInterface.decodeToken',
+            'AuthorInterface.getListWithBooks'
+        ]
+    },
+    {
+        method: 'get',
+        endpoint: '/:page',
+        handlers: [
+            'TokenInterface.decodeToken',
+            'AuthorInterface.getListWithBooks'
+        ]
+    },
 ];

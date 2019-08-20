@@ -15,6 +15,7 @@ module.exports = {
     FS: require('fs'),
     HTTP: require('http'),
     JWT: require('jsonwebtoken'),
+    MD5: require('md5'),
     METHOD_OVERRIDE: require('method-override'),
     MONGOOSE: require('mongoose'),
     MONGOOSE_DELETE: require('mongoose-delete'),

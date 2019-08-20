@@ -1,14 +1,27 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
+  let randomString = require('md5');
   var user = sequelize.define('user', {
-    email: DataTypes.STRING,
-    username: DataTypes.STRING,
-    password: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
+    email:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    password: { 
+      type: DataTypes.STRING,
+      defaultValue: randomString('123'),
+      set(val) {
+        this.setDataValue('password', randomString(val));
       }
+    },
+  },{
+    defaultScope: {
+      attributes: { 
+        exclude: ['password','createdAt','updatedAt'] 
+      },
     }
   });
   return user;
